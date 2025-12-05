@@ -4,18 +4,25 @@ export function cleanInput(input: string): string[] {
   let splitted_input = trimmed_string.split(/\s+/);
   return splitted_input;
 }
+
+export function startREPL() {
 const { createInterface } = require("node:readline");
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout, 
-  prompt: rl.setPrompt(prompt)
+  prompt: "Pokedex > "
 });
 
-rl.on("line", callback) => {
-  if input === [] {
+rl.on("line", (line) => {
     rl.prompt()
+    return
+  let result = cleanInput(line)
+  if result.length === 0 {
+    rl.prompt()
+    return
   }
-  cleanInput(input)
-  console.log(`Your command was ${prompt}`)
+  console.log(`Your command was: ${result[0]}`)
   rl.prompt()
+})
 }
+
