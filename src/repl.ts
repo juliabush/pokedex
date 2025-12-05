@@ -21,7 +21,6 @@ export function startREPL() {
       rl.prompt();
       return;
     }
-    console.log(`Your command was: ${result[0]}`);
     rl.prompt();
   });
 }
