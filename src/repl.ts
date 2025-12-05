@@ -1,3 +1,5 @@
+import { createInterface } from "readline";
+
 export function cleanInput(input: string): string[] {
   let lowercase_string = input.toLowerCase();
   let trimmed_string = lowercase_string.trim();
@@ -6,23 +8,20 @@ export function cleanInput(input: string): string[] {
 }
 
 export function startREPL() {
-const { createInterface } = require("node:readline");
-const rl = createInterface({
-  input: process.stdin,
-  output: process.stdout, 
-  prompt: "Pokedex > "
-});
+  const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: "Pokedex > ",
+  });
 
-rl.on("line", (line) => {
-    rl.prompt()
-    return
-  let result = cleanInput(line)
-  if result.length === 0 {
-    rl.prompt()
-    return
-  }
-  console.log(`Your command was: ${result[0]}`)
-  rl.prompt()
-})
+  rl.prompt();
+  rl.on("line", (line: string) => {
+    let result = cleanInput(line);
+    if (result.length === 0) {
+      rl.prompt();
+      return;
+    }
+    console.log(`Your command was: ${result[0]}`);
+    rl.prompt();
+  });
 }
-
