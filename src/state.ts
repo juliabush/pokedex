@@ -6,4 +6,7 @@ export type CLICommand = {
   callback: (state: State) => void;
 };
 
-export type State = {};
+export type State = {
+  createInterface: Interface;
+  commands: Record<string, CLICommand>;
+};
