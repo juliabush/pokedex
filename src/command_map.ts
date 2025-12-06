@@ -1,7 +1,7 @@
 import type { State } from "./state.js";
 
 export async function commandMap(state: State): Promise<void> {
-  const locations = await state.pokeAPI.fetchLocations(state.nextLocationsURL);
+  const locations = await state.pokeApi.fetchLocations(state.nextLocationsURL);
 
   state.nextLocationsURL = locations.next;
   state.prevLocationsURL = locations.previous;
