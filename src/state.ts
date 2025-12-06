@@ -3,3 +3,5 @@ export type CLICommand = {
   description: string;
   callback: (state: State) => void;
 };
+
+export type State = {};
