@@ -7,8 +7,8 @@ export async function commandMapBack(state: State): Promise<void> {
   }
   const locations = await state.pokeApi.fetchLocations(state.prevLocationsURL);
 
-  state.nextLocationsURL = locations.next;
-  state.prevLocationsURL = locations.previous;
+  state.nextLocationsURL = locations.next ?? undefined;
+  state.prevLocationsURL = locations.previous ?? undefined;
 
   for (const loc of locations.results) {
     console.log(loc.name);
