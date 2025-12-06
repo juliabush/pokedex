@@ -1,7 +1,7 @@
 import { commandExit } from "./command_exit.js";
 import { commandHelp } from "./command_help.js";
 import { commandMap } from "./command_map.js";
-import { commandMapBack} from "./command_mapb.js"
+import { commandMapBack } from "./command_mapb.js";
 import { CLICommand } from "./state.js";
 
 export function getCommands(): Record<string, CLICommand> {
@@ -22,9 +22,9 @@ export function getCommands(): Record<string, CLICommand> {
       callback: commandMap,
     },
     mapb: {
-      name: "mapb"
-      description: "Map backward"
-      callback: commandMapBack
-    }
+      name: "mapb",
+      description: "Map backward",
+      callback: commandMapBack,
+    },
   };
 }
