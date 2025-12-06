@@ -1,5 +1,5 @@
 import { createInterface } from "readline";
-import { getCommands } from "./command";
+import { getCommands } from "./command.js";
 
 export function cleanInput(input: string): string[] {
   let lowercase_string = input.toLowerCase();
