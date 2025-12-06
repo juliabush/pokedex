@@ -16,13 +16,22 @@ export function startREPL() {
   });
 
   rl.prompt();
-  getCommands();
   rl.on("line", (line: string) => {
     let result = cleanInput(line);
     if (result.length === 0) {
       rl.prompt();
       return;
     }
+    let commands = getCommands();
+    const commandName = result[0];
+    const cmd = commands[commandName];
+
+    if (cmd) {
+      cmd.callback(commands);
+    } else {
+      console.log("Unkown command");
+    }
+
     rl.prompt();
   });
 }
