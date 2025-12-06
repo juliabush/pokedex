@@ -24,7 +24,10 @@ export type ShallowLocations = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: String[];
+  results: {
+    name: string;
+    url: string;
+  }[];
 };
 
 export type Location = {};
