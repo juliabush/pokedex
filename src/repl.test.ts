@@ -17,7 +17,7 @@ describe.each([
   });
 });
 // Cache test
-test.concurrent.each({
+test.concurrent.each([
   {
     key: "https://pokeapi.co/api/v2/location-area",
     val: "testdata",
@@ -25,10 +25,10 @@ test.concurrent.each({
   },
   {
     key: "https://pokeapi.co/api/v2/location-area/1",
-    val: { name: "some-loaction" } ,
+    val: { name: "some-location" },
     interval: 1000,
-  }
-})("Test Caching $interval ms", async ({ key, val, interval }) => {
+  },
+])("Test Caching $interval ms", async ({ key, val, interval }) => {
   const cache = new Cache(interval);
 
   cache.add(key, val);
@@ -39,5 +39,5 @@ test.concurrent.each({
   const reaped = cache.get<typeof val>(key);
   expect(reaped).toBe(undefined);
 
-  cache.stopReapLoop()
-})
+  cache.stopReapLoop();
+});
