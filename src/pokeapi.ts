@@ -30,4 +30,6 @@ export type ShallowLocations = {
   }[];
 };
 
-export type Location = {};
+export type Location = {
+  name: string;
+};
