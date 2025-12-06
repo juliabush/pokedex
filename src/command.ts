@@ -1,5 +1,5 @@
-import { commandExit } from "command_exit";
-import { commandHelp } from "command_help";
+import { commandExit } from "./command_exit";
+import { commandHelp } from "./command_help";
 
 export function getCommands(): Record<string, CLICommand> {
   return {
