@@ -16,7 +16,7 @@ export function startREPL() {
   });
 
   rl.prompt();
-  getCommands(rl.prompt());
+  getCommands();
   rl.on("line", (line: string) => {
     let result = cleanInput(line);
     if (result.length === 0) {
