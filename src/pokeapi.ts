@@ -1,9 +1,9 @@
 export class PokeAPI {
-  private static readonly baseURL = "https://pokeapi.com/api/v2";
+  private static readonly baseURL = "https://pokeapi.co/api/v2";
 
   constructor() {}
 
-  async fetchLocations(pageURL?: string): Promise<ShalowLocations> {}
+  async fetchLocations(pageURL?: string): Promise<ShallowLocations> {}
 
   async fetchLocation(locationName: string): Promise<Location> {}
 }
