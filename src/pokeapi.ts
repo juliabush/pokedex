@@ -29,11 +29,18 @@ export class PokeAPI {
   async fetchLocation(locationName: string): Promise<Location> {
     const url = `${PokeAPI.baseURL}/location-area/${locationName}`;
 
+    const cached = this.cache.get<Location>(url);
+    if (cached !== undefined) {
+      return cached;
+    }
+
     const resp = await fetch(url);
 
     if (!resp.ok) {
       throw new Error(`${resp.status} ${resp.statusText}`);
     }
+
+    this.cache.add(url, location);
 
     const location: Location = await resp.json();
     return location;
