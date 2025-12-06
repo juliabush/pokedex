@@ -1,5 +1,15 @@
 import type { State } from "./state.js";
 
-export function commandMap(state: State) {
-  await fetch("https://pokeapi.com/api/v2/location-area{}/");
+export async function commandMap(state: State) {
+  let pokeApiUrl = "https://pokeapi.com/api/v2/location-area{}/";
+  try {
+    const response = await fetch(pokeApiUrl);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+    const result = await response.json();
+    console.log(result);
+  } catch (error) {
+    console.error(error.message);
+  }
 }
