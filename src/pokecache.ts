@@ -1,40 +1,43 @@
 export class Cache {
-    #cache = new Map<string, CacheEntry<any>>();
-    #reapIntervalId: NodeJS.Timeout | undefined = undefined;
-    #interval: number;
-    add<T>(key: string, val: T) {
-        return this.#cache.CacheEntry.set(key, val)
+  #cache = new Map<string, CacheEntry<any>>();
+  #reapIntervalId: NodeJS.Timeout | undefined = undefined;
+  #interval: number;
+  add<T>(key: string, val: T) {
+    const entry: CacheEntry<T> = {
+      createdAt: Date.now(),
+      val: val,
+    };
+    this.#cache.set(key, entry);
+  }
+  get<T>(key: string): T | undefined {
+    const entry = this.#cache.get(key);
+    if (entry === undefined) {
+      return undefined;
     }
-    get<T>(key: string): Object {
-        if (this.#cache.CacheEntry.get(key) === undefined) {
-            return undefined
-        } else {
-            this.#cache.CacheEntry.get(key)
-        }
-        
+    return entry.val as T;
+  }
+  #reap() {
+    const now = Date.now();
+    for (const [key, entry] of this.#cache) {
+      if (now - this.#interval) {
+        this.#cache.delete(key);
+      }
     }
-    #reap() {
-        for entries in Cache{
-            if Cache.cache > Date.now() - this.#interval {
-                    delete
-         } else {
-                
-            }
-        }
-    }
-    #startReapLoop() {
-        setInterval(this.#reap, this.#interval)
-    }
-    stopReapLoop() {
-        clearInterval();
-        this.#reapIntervalId = undefined
-    }
-    constructor(number: number) {
-        number = this.#interval;
-        this.#startReapLoop()
-    }
+  }
+  #startReapLoop() {
+    this.#reapIntervalId = setInterval(() => {
+      this.#reap();
+    }, this.#interval);
+  }
+  stopReapLoop() {
+    clearInterval(this.#reapIntervalId);
+  }
+  constructor(interval: number) {
+    this.#interval = interval;
+    this.#startReapLoop();
+  }
 }
 export type CacheEntry<T> = {
-    createdAt: number;
-    val: T;
-}
+  createdAt: number;
+  val: T;
+};
