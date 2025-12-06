@@ -9,11 +9,7 @@ export function cleanInput(input: string): string[] {
 }
 
 export function startREPL(state: State) {
-  const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    prompt: "Pokedex > ",
-  });
+  const rl = state.readline;
 
   rl.prompt();
   rl.on("line", (line: string) => {
@@ -22,12 +18,12 @@ export function startREPL(state: State) {
       rl.prompt();
       return;
     }
-    let commands = getCommands();
+    const commands = state.commands;
     const commandName = result[0];
     const cmd = commands[commandName];
 
     if (cmd) {
-      cmd.callback(commands);
+      cmd.callback(state);
     } else {
       console.log("Unkown command");
     }
