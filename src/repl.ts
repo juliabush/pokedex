@@ -1,5 +1,6 @@
 import { createInterface } from "readline";
 import { getCommands } from "./command.js";
+import type { State } from "./state.js";
 
 export function cleanInput(input: string): string[] {
   let lowercase_string = input.toLowerCase();
