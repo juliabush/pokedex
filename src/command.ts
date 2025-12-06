@@ -6,15 +6,15 @@ export function getCommands(): Record<string, CLICommand> {
       callback: commandExit,
     },
     help: {
-        name: "help",
-        description: "Provides a help menu"
-        callback: commandHelp,
-    }
+      name: "help",
+      description: "Provides a help menu",
+      callback: commandHelp,
+    },
   };
 }
 
 export type CLICommand = {
   name: string;
   description: string;
-  callback: (commands: Recod<string, CLICommand>) => void;
+  callback: (commands: Record<string, CLICommand>) => void;
 };
