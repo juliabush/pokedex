@@ -1,8 +1,8 @@
 import type { State } from "./state.js";
 
-export function commandHelp() {
+export function commandHelp(state: State) {
   console.log("Welcome to the Pokedex!\n Usage:");
-  for (const cmd of state.commands) {
+  for (const cmd of Object.values(state.commands)) {
     console.log(`${cmd.name}: ${cmd.description}`);
   }
 }
