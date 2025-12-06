@@ -10,3 +10,5 @@ export type State = {
   createInterface: Interface;
   commands: Record<string, CLICommand>;
 };
+
+export function initState() {}
