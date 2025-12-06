@@ -5,12 +5,12 @@ export async function commandMapBack(state: State): Promise<void> {
     console.log("you're on the first page");
     return;
   }
-  const locations = await state.pokeApi.fetchLocations(
+  const locations = await state.pokeAPI.fetchLocations(
     state.prevLocationsURL ?? undefined
   );
 
-  state.nextLocationsURL = locations.next ?? undefined;
-  state.prevLocationsURL = locations.previous ?? undefined;
+  state.nextLocationsURL = locations.next;
+  state.prevLocationsURL = locations.previous;
 
   for (const loc of locations.results) {
     console.log(loc.name);
