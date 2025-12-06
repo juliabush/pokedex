@@ -1,3 +1,5 @@
+import { createInterface, type Interface } from "readline";
+
 export type CLICommand = {
   name: string;
   description: string;
