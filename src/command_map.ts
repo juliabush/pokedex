@@ -1,7 +1,7 @@
 import type { State } from "./state.js";
 
 export async function commandMap(state: State) {
-  let pokeApiUrl = "https://pokeapi.com/api/v2/location-area{}/";
+  let pokeApiUrl = "https://pokeapi.co/api/v2/location-area/";
   try {
     const response = await fetch(pokeApiUrl);
     if (!response.ok) {
