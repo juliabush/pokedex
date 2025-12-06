@@ -1,5 +1,5 @@
 import { cleanInput } from "./repl";
-import { Cache } from ".pokecache.js";
+import { Cache } from "./pokecache.js";
 import { describe, expect, test } from "vitest";
 
 // cleanInput test
