@@ -19,24 +19,24 @@ describe.each([
 // Cache test
 test.concurrent.each({
   {
-    key: ""
-    val:
+    key: "https://pokeapi.co/api/v2/location-area",
+    val: "testdata",
     interval: 500,
   },
   {
-    key:
-    val:
+    key: "https://pokeapi.co/api/v2/location-area/1",
+    val: { name: "some-loaction" } ,
     interval: 1000,
   }
-})("Test Caching $interval ms", async ({ key,val, interval }) => {
+})("Test Caching $interval ms", async ({ key, val, interval }) => {
   const cache = new Cache(interval);
 
   cache.add(key, val);
-  const cached = cache.get(key);
+  const cached = cache.get<typeof val>(key);
   expect(cached).toBe(val);
 
   await new Promise((resolve) => setTimeout(resolve, interval + 100));
-  const reaped = cache.get(key);
+  const reaped = cache.get<typeof val>(key);
   expect(reaped).toBe(undefined);
 
   cache.stopReapLoop()
