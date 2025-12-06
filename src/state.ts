@@ -11,15 +11,7 @@ export type CLICommand = {
 export type State = {
   readline: Interface;
   commands: Record<string, CLICommand>;
-  pokeApi: {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: {
-      name: string;
-      url: string;
-    }[];
-  };
+  pokeApi: PokeAPI;
   nextLocationsURL?: string | null;
   prevLocationsURL?: string | null;
 };
@@ -34,7 +26,7 @@ export function initState() {
     readline: readlineInterface,
     commands: getCommands(),
     pokeApi: new PokeAPI(),
-    nextLocationsURL: undefined,
-    prevLocationsURL: undefined,
+    nextLocationsURL: "",
+    prevLocationsURL: "",
   };
 }
