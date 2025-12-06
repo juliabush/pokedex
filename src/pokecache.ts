@@ -3,7 +3,7 @@ export class Cache {
     #reapIntervalId: NodeJS.Timeout | undefined = undefined;
     #interval: number;
 }
-export type CacheEntry<T>(createdAt: number, val<T>): T {
-    createdAt:
-    val: 
+export type CacheEntry<T> {
+    createdAt: number;
+    val: T;
 }
