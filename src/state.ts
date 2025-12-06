@@ -24,7 +24,7 @@ export function initState() {
   return {
     readline: readlineInterface,
     commands: getCommands(),
-    pokeApi: new PokeAPI()
+    pokeApi: new PokeAPI(),
     nextLocationsURL: undefined,
     prevLocationsURL: undefined,
   };
