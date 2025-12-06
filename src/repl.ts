@@ -8,7 +8,7 @@ export function cleanInput(input: string): string[] {
   return splitted_input;
 }
 
-export function startREPL() {
+export function startREPL(state: State) {
   const rl = createInterface({
     input: process.stdin,
     output: process.stdout,
