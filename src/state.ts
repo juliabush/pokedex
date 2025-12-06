@@ -1,4 +1,5 @@
 import { createInterface, type Interface } from "readline";
+import { getCommands } from "./command";
 
 export type CLICommand = {
   name: string;
@@ -7,8 +8,18 @@ export type CLICommand = {
 };
 
 export type State = {
-  createInterface: Interface;
+  readline: Interface;
   commands: Record<string, CLICommand>;
 };
 
-export function initState() {}
+export function initState() {
+  const readlineInterface = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    prompt: "pokedex > ",
+  });
+  return {
+    readline: readlineInterface,
+    commands: getCommands(),
+  };
+}
