@@ -40,9 +40,10 @@ export class PokeAPI {
       throw new Error(`${resp.status} ${resp.statusText}`);
     }
 
+    const location: Location = await resp.json();
+
     this.cache.add(url, location);
 
-    const location: Location = await resp.json();
     return location;
   }
 }
