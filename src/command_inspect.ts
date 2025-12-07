@@ -5,12 +5,13 @@ export async function commandInspect(
   state: State,
   pokemonName: string
 ): Promise<void> {
-  if ((state.pokedex[pokemonName] = pokemon) === true) {
-    let difficulty = pokemon.base_experience;
+  let pokemon = state.pokedex[pokemonName];
+  if (pokemon !== undefined && pokemon !== null) {
+    let name = pokemon.name;
     let height = pokemon.height;
     let weight = pokemon.weight;
     console.log(
-      `Name: ${pokemonName}\n Height: ${pokemon.height} Weight: ${pokemon.weight}`
+      `Name: ${pokemon.name}\n Height: ${pokemon.height}\n Weight: ${pokemon.weight}\n`
     );
   } else {
     console.log("you have not caught that pokemon");
