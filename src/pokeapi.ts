@@ -63,6 +63,7 @@ export class PokeAPI {
     this.cache.add(url, pokemon);
 
     return pokemon;
+  }
 }
 
 export type ShallowLocations = {
