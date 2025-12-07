@@ -26,5 +26,10 @@ export function getCommands(): Record<string, CLICommand> {
       description: "Map backward",
       callback: commandMapBack,
     },
+    explore: {
+      name: "explore",
+      description: "Exploring diffrent locations",
+      callback: commandExplore,
+    },
   };
 }
