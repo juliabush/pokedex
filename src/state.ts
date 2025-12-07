@@ -11,6 +11,7 @@ export type CLICommand = {
 export type State = {
   readline: Interface;
   commands: Record<string, CLICommand>;
+  pokedex: Record<string, Pokemon>;
   pokeAPI: PokeAPI;
   nextLocationsURL?: string | null;
   prevLocationsURL?: string | null;
