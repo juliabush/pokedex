@@ -21,10 +21,11 @@ export function startREPL(state: State) {
     }
     const commands = state.commands;
     const commandName = result[0];
+    const args = result.slice(1);
     const cmd = commands[commandName];
 
     if (cmd) {
-      cmd.callback(state);
+      cmd.callback(state, ...args);
     } else {
       console.log("Unkown command");
     }
