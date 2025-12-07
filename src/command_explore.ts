@@ -2,13 +2,13 @@ import { State } from "./state.js";
 
 export async function commandExplore(
   state: State,
-  locationArea: string
+  locationName: string
 ): Promise<void> {
-  const locations = await state.pokeAPI.fetchLocations(state.nextLocationsURL);
-  state.nextLocationsURL = locations.next;
-  state.prevLocationsURL = locations.previous;
-
-  for (const loc of locations.results) {
-    console.log(loc.name);
+  const locations = await state.pokeAPI.fetchLocation(locationName);
+  let result = locations.pokemon_encounters;
+  console.log(`Exploring ${locationName}...`);
+  console.log(`Found Pokemon:`);
+  for (const pokes of result) {
+    console.log(`- ${pokes.pokemon.name}`);
   }
 }
