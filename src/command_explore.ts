@@ -9,6 +9,6 @@ export async function commandExplore(
   console.log(`Exploring ${locationName}...`);
   console.log(`Found Pokemon:`);
   for (const pokes of result) {
-    console.log(`- ${pokes.name}`);
+    console.log(`- ${pokes.pokemon.name}`);
   }
 }
