@@ -19,7 +19,7 @@ export class Cache {
   #reap() {
     const now = Date.now();
     for (const [key, entry] of this.#cache) {
-      if (now - this.#interval) {
+      if (entry.createdAt < now - this.#interval) {
         this.#cache.delete(key);
       }
     }
