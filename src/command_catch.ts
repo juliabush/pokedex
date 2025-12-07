@@ -25,7 +25,7 @@ export async function commandCatch(
 
   if (caught) {
     console.log(`${pokemonName} was caught!`);
-    state.pokedex[pokemonName] += pokemon;
+    state.pokedex[pokemonName] = pokemon;
   } else {
     console.log(`${pokemonName} escaped!`);
   }
