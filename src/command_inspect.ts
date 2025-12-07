@@ -15,11 +15,13 @@ export async function commandInspect(
     console.log(
       `\nName: ${pokemon.name}\nHeight: ${pokemon.height}\nWeight: ${pokemon.weight}\n`
     );
-    for (const stat of pokemon.stats) {
-      console.log(`-${stat.name}: ${pokemon.base_stat}`);
+    console.log(`\nStats:\n`);
+    for (const individualStat of pokemon.stats) {
+      console.log(`-${individualStat.stat.name}: ${individualStat.base_stat}`);
     }
-    for (const type of pokemon.types) {
-      console.log(`-${type.name}`);
+    console.log(`\nType:\n`);
+    for (const individualType of pokemon.types) {
+      console.log(`-${individualType.type.name}`);
     }
   } else {
     console.log("you have not caught that pokemon");
