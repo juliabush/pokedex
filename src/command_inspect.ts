@@ -1,5 +1,5 @@
 import type { State } from "./state.js";
-import { pokemon } from "./command_catch.js";
+import { Pokemon } from "./pokeapi.js";
 
 export async function commandInspect(
   state: State,
