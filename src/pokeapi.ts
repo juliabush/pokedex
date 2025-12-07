@@ -92,12 +92,13 @@ export type Pokemon = {
   height: number;
   weight: number;
   stats: {
+    base_stat: number;
     stat: {
-      base_stat: number;
       name: string;
     };
   }[];
   types: {
+    slot: number;
     type: {
       name: string;
     };
