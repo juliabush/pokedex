@@ -46,6 +46,7 @@ export class PokeAPI {
 
     return location;
   }
+  async fetchPokemon(pokemonName: string): Promise<Pokemon> {}
 }
 
 export type ShallowLocations = {
