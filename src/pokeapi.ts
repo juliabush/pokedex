@@ -68,3 +68,8 @@ export type Location = {
     };
   }[];
 };
+
+export type Pokemon = {
+  name: string;
+  base_experience: number;
+};
