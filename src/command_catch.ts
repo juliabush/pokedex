@@ -4,7 +4,7 @@ export async function commandCatch(
   state: State,
   pokemonName: string
 ): Promise<void> {
-  export const pokemon = await state.pokeAPI.fetchPokemon(pokemonName);
+  const pokemon = await state.pokeAPI.fetchPokemon(pokemonName);
   let result = pokemon.name;
   let difficulty = pokemon.base_experience;
 
