@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { catchPokemon } from "@/api/backend";
 import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 
@@ -44,6 +45,9 @@ export default function PokeballAnimator() {
       groupRef.current.position.x = 0;
     }
   });
+
+  const data = await catchPokemon("pikachu");
+  if (data.caught) setCaught(true);
 
   return (
     <group
