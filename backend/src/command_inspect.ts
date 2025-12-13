@@ -1,10 +1,19 @@
 import type { State } from "./state.js";
 import { Pokemon } from "./pokeapi.js";
 
-export async function commandInspect(
+export function commandInspect(
   state: State,
   pokemonName: string
-): Promise<void> {
+):
+  | {
+      found: true;
+      name: string;
+      height: number;
+      weight: number;
+      stats: { name: string; value: number }[];
+      types: string[];
+    }
+  | { found: false } {
   let pokemon = state.pokedex[pokemonName];
   if (pokemon !== undefined && pokemon !== null) {
     let name = pokemon.name;
