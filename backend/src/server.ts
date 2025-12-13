@@ -5,7 +5,6 @@ import { commandCatch } from "./command_catch.js";
 import { commandMap } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
 import { commandInspect } from "./command_inspect.js";
-import { commandHelp } from "./command_help.js";
 
 const app = express();
 app.use(cors());
@@ -13,9 +12,6 @@ app.use(express.json());
 
 const state = initState();
 
-app.get("/help", (_req, res) => {
-  res.json(commandHelp(state));
-});
 // _req notation to signify that the parameter
 //  is unused but standard in function signature
 
