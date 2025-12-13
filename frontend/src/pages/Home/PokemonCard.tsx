@@ -10,7 +10,7 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
   ({ position = [0, 0, 0], scale = 1 }, ref) => {
     return (
       <mesh ref={ref} position={position} scale={scale}>
-        <boxGeometry args={[3, 4, 0.1]} />
+        <boxGeometry args={[4.5, 6, 0.15]} />
         <meshStandardMaterial color="white" />
       </mesh>
     );
