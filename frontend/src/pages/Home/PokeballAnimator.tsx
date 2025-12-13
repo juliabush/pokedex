@@ -31,6 +31,12 @@ export default function PokeballAnimator() {
     return () => clearTimeout(t);
   }, [phase, caught]);
 
+  useEffect(() => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.x = 0.1;
+    groupRef.current.rotation.y = -0.1;
+  }, []);
+
   useFrame(() => {
     if (!groupRef.current) return;
 
