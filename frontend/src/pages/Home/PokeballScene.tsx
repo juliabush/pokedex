@@ -11,7 +11,7 @@ function Pokeball() {
 
     const timer = setTimeout(() => {
       setShaking(false);
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [shaking]);
