@@ -13,42 +13,42 @@ export function getCommands(): Record<string, BackendCommand> {
     exit: {
       name: "exit",
       description: "Exits the pokedex",
-      callback: commandExit,
+      handler: commandExit,
     },
     help: {
       name: "help",
       description: "Provides a help menu",
-      callback: commandHelp,
+      handler: commandHelp,
     },
     map: {
       name: "map",
       description: "Map forward",
-      callback: commandMap,
+      handler: commandMap,
     },
     mapb: {
       name: "mapb",
       description: "Map backward",
-      callback: commandMapBack,
+      handler: commandMapBack,
     },
     explore: {
       name: "explore",
       description: "Exploring diffrent locations",
-      callback: commandExplore,
+      handler: commandExplore,
     },
     catch: {
       name: "catch",
       description: "Catch different pokemon",
-      callback: commandCatch,
+      handler: commandCatch,
     },
     inspect: {
       name: "inspect",
       description: "Inspect pokemon's to see stats",
-      callback: commandInspect,
+      handler: commandInspect,
     },
     pokedex: {
       name: "pokedex",
       description: "See all your caught pokemon",
-      callback: commandPokedex,
+      handler: commandPokedex,
     },
   };
 }
