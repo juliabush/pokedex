@@ -6,7 +6,7 @@ import PokeballModel from "./PokeballModel";
 type Phase = "idle" | "shaking" | "opening";
 
 export default function PokeballAnimator() {
-  const groupRef = useef<THREE.Group | null>(null);
+  const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
 
   const [phase, setPhase] = useState<Phase>("idle");
@@ -30,13 +30,16 @@ export default function PokeballAnimator() {
       groupRef.current.rotation.z = Math.sin(time * 0.02) * 0.3;
       groupRef.current.position.x = Math.sin(time * 0.05) * 0.5;
     }
-
     if (phase === "opening" && topRef.current) {
       topRef.current.rotation.x = THREE.MathUtils.lerp(
-        topef.current.rotation.x,
+        topRef.current.rotation.x,
         -Math.PI / 2,
         0.1
       );
+
+      if (topRef.current.rotation.x < -Math.PI / 2 + 0.01) {
+        setPhase("idle");
+      }
     }
 
     if (phase === "idle") {
