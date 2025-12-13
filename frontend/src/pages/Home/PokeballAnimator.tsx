@@ -15,9 +15,14 @@ export default function PokeballAnimator() {
   const [caught, setCaught] = useState(false);
 
   useEffect(() => {
-    if (!caught) return;
-    setPhase("opening");
-  }, [caught]);
+    if (phase !== "shaking") return;
+
+    const t = setTimeout(() => {
+      if (!caught) setPhase("idle");
+    }, 1500);
+
+    return () => clearTimeout(t);
+  }, [phase, caught]);
 
   useFrame(() => {
     if (!groupRef.current) return;
