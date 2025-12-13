@@ -11,15 +11,12 @@ export default function PokeballAnimator() {
 
   const [phase, setPhase] = useState<Phase>("idle");
 
+  const [caught, setCaught] = useState(false);
+
   useEffect(() => {
-    if (phase !== "shaking") return;
-
-    const t = setTimeout(() => {
-      setPhase("opening");
-    }, 1500);
-
-    return () => clearTimeout(t);
-  }, [phase]);
+    if (!caught) return;
+    setPhase("opening");
+  }, [caught]);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -51,7 +48,11 @@ export default function PokeballAnimator() {
   return (
     <group
       ref={groupRef}
-      onClick={() => phase === "idle" && setPhase("shaking")}
+      onClick={() => {
+        if (phase !== "idle") return;
+        setPhase("shaking");
+        catchPokemon("pikachu");
+      }}
     >
       <PokeballModel topRef={topRef} />
     </group>
