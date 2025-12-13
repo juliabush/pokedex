@@ -5,7 +5,7 @@ export async function commandExplore(
   state: State,
   locationName: string
 ): Promise<{ location: string; pokemon: string[] }> {
-  const locations = await state.pokeAPI.fetchLocation(locationName);
+  const location = await state.pokeAPI.fetchLocation(locationName);
 
   const pokemon = location.pokemon_encounters.map(
     (encounter: Location["pokemon_encounters"][number]) =>
