@@ -1,8 +1,12 @@
 import type { State } from "./state.js";
 
-export async function commandHelp(state: State): Promise<void> {
-  console.log("Welcome to the Pokedex!\n Usage:");
-  for (const cmd of Object.values(state.commands)) {
-    console.log(`${cmd.name}: ${cmd.description}`);
-  }
+export function commandHelp(state: State): {
+  commands: { name: string; description: string }[];
+} {
+  const commands = Object.values(state.commands).map((cmd) => ({
+    name: cmd.name,
+    description: cmd.description,
+  }));
+
+  return { commands };
 }
