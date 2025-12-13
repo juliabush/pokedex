@@ -8,14 +8,17 @@ function Pokeball() {
 
   useFrame(() => {
     if (!mesh.current) return;
-    mesh.current.rotation.x += 0.01;
-    mesh.current.rotation.y += 0.005;
-    mesh.current.rotation.z += 0.01;
+
+    if (shaking) {
+      mesh.current.rotation.z = Math.sin(Date.now() * 0.02) * 0.3;
+    } else {
+      mesh.current.rotation.z = 0;
+    }
   });
 
   return (
-    <mesh ref={mesh}>
-      <torusGeometry args={[10, 3, 16, 100]} />
+    <mesh ref={mesh} onClick={() => setShaking(true)}>
+      <sphereGeometry args={[5, 32, 32]} />
       <meshStandardMaterial color={0xff6347} />
     </mesh>
   );
