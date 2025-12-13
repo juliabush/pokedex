@@ -33,7 +33,7 @@ app.post("/catch", async (req, res) => {
 });
 
 app.get("/inspect/:name", (req, res) => {
-  res.json(commandInspect(state.req.params.name));
+  res.json(commandInspect(state, req.params.name));
 });
 
 app.listen(3000, () => {
