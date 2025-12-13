@@ -10,7 +10,6 @@ export type State = {
 
 export function initState() {
   return {
-    commands: getCommands(),
     pokeAPI: new PokeAPI(),
     pokedex: {},
     nextLocationsURL: null,
