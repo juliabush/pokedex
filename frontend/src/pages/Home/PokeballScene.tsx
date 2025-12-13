@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, usestate } from "react";
+import { useRef, useState } from "react";
 import * as THREE from "three";
 
 function Pokeball() {
@@ -10,9 +10,12 @@ function Pokeball() {
     if (!mesh.current) return;
 
     if (shaking) {
-      mesh.current.rotation.z = Math.sin(Date.now() * 0.02) * 0.3;
+      const d = Date.now();
+      mesh.current.rotation.z = Math.sin(d * 0.02) * 0.3;
+      mesh.current.position.x = Math.sin(d * 0.05) * 0.5;
     } else {
       mesh.current.rotation.z = 0;
+      mesh.current.position.x = 0;
     }
   });
 
@@ -26,10 +29,10 @@ function Pokeball() {
 
 export default function PokeballScene() {
   return (
-    <Canvas camera={{ position: [-3, 0, 30], fov: 75 }}>
+    <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
       <ambientLight intensity={0.5} />
       <pointLight position={[5, 5, 5]} />
-      <Torus />
+      <Pokeball />
     </Canvas>
   );
 }
