@@ -21,15 +21,15 @@ export default function PokeballAnimator() {
     if (phase !== "shaking") return;
 
     const t = setTimeout(() => {
-      if (!caught) setPhase("idle");
+      if (caught) {
+        setPhase("opening");
+      } else {
+        setPhase("idle");
+      }
     }, 1500);
 
     return () => clearTimeout(t);
   }, [phase, caught]);
-
-  useEffect(() => {
-    if (caught) setPhase("opening");
-  }, [caught]);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -72,7 +72,7 @@ export default function PokeballAnimator() {
   return (
     <>
       {message && (
-        <Html center>
+        <Html position={[0, 8, 0]} center>
           <div>{message}</div>
         </Html>
       )}
@@ -81,8 +81,8 @@ export default function PokeballAnimator() {
         ref={groupRef}
         onClick={() => {
           if (phase !== "idle") return;
-          setCaught(false);
           setMessage("");
+          setCaught(false);
           setPhase("shaking");
           handleCatch();
         }}
