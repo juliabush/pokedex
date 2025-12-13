@@ -1,4 +1,5 @@
 import { State } from "./state.js";
+import type { Location } from "./pokeapi.js";
 
 export async function commandExplore(
   state: State,
@@ -7,7 +8,8 @@ export async function commandExplore(
   const locations = await state.pokeAPI.fetchLocation(locationName);
 
   const pokemon = location.pokemon_encounters.map(
-    (encounter) => encounter.pokemon.name
+    (encounter: Location["pokemon_encounters"][number]) =>
+      encounter.pokemon.name
   );
 
   return {
