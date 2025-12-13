@@ -6,6 +6,11 @@ export default function PokeballModel() {
         <sphereGeometry args={[5, 32, 32, 0, Math.PI * 2, 0, Math.PI / 2]} />
         <meshStandardMaterial color="red" />
       </mesh>
+      {/* Bottom white half of Pokeball */}
+      <mesh>
+        <sphereGeometry args={[5, 32, 32, 0, Math.PI * 2, 0, Math.PI / 2]} />
+        <meshStandardMaterial color="white" />
+      </mesh>
     </group>
   );
 }
