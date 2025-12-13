@@ -46,8 +46,10 @@ export default function PokeballAnimator() {
     }
   });
 
-  const data = await catchPokemon("pikachu");
-  if (data.caught) setCaught(true);
+  async function handleCatch() {
+    const data = await catchPokemon("pikachu");
+    if (data.caught) setCaught(true);
+  }
 
   return (
     <group
@@ -55,7 +57,7 @@ export default function PokeballAnimator() {
       onClick={() => {
         if (phase !== "idle") return;
         setPhase("shaking");
-        catchPokemon("pikachu");
+        handleCatch();
       }}
     >
       <PokeballModel topRef={topRef} />
