@@ -1,9 +1,10 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, usestate } from "react";
 import * as THREE from "three";
 
-function Torus() {
+function Pokeball() {
   const mesh = useRef<THREE.Mesh | null>(null);
+  const [shaking, setShaking] = useState(false);
 
   useFrame(() => {
     if (!mesh.current) return;
