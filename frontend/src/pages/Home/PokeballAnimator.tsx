@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
-import { catchPokemon } from "@/api/backend";
+import { catchPokemon } from "../../api/backend";
 import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 
