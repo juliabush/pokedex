@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { catchPokemon } from "../../api/backend";
 import * as THREE from "three";
@@ -66,7 +67,11 @@ export default function PokeballAnimator() {
 
   return (
     <>
-      {message && <div>{message}</div>}
+      {message && (
+        <Html center>
+          <div>{message}</div>
+        </Html>
+      )}
 
       <group
         ref={groupRef}
