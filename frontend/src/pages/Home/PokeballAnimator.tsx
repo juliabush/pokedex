@@ -72,6 +72,8 @@ export default function PokeballAnimator() {
         ref={groupRef}
         onClick={() => {
           if (phase !== "idle") return;
+          setCaught(false);
+          setMessage("");
           setPhase("shaking");
           handleCatch();
         }}
