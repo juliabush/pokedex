@@ -1,10 +1,20 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
 function Pokeball() {
   const mesh = useRef<THREE.Mesh | null>(null);
   const [shaking, setShaking] = useState(false);
+
+  useEffect(() => {
+    if (!shaking) return;
+
+    const timer = setTimeout(() => {
+      setShaking(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [shaking]);
 
   useFrame(() => {
     if (!mesh.current) return;
