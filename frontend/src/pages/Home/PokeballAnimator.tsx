@@ -4,6 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import { catchPokemon } from "../../api/backend";
 import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
+import PokemonCard from "./PokemonCard";
 
 type Phase = "idle" | "shaking" | "opening";
 
@@ -103,10 +104,7 @@ export default function PokeballAnimator() {
       >
         <PokeballModel topRef={topRef} />
 
-        <mesh ref={cardRef} position={[0, 0, 4.5]} scale={0.2}>
-          <boxGeometry args={[3, 4, 0.1]} />
-          <meshStandardMaterial color="white" />
-        </mesh>
+        <PokemonCard ref={cardRef} position={[0, 0, 4.5]} scale={0.2} />
       </group>
     </>
   );
