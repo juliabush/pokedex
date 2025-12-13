@@ -14,6 +14,8 @@ export default function PokeballAnimator() {
 
   const [caught, setCaught] = useState(false);
 
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     if (phase !== "shaking") return;
 
@@ -53,19 +55,29 @@ export default function PokeballAnimator() {
 
   async function handleCatch() {
     const data = await catchPokemon("pikachu");
-    if (data.caught) setCaught(true);
+
+    if (data.caught) {
+      setCaught(true);
+      setMessage("Caught");
+    } else {
+      setMessage("Pikachu escaped! Try again");
+    }
   }
 
   return (
-    <group
-      ref={groupRef}
-      onClick={() => {
-        if (phase !== "idle") return;
-        setPhase("shaking");
-        handleCatch();
-      }}
-    >
-      <PokeballModel topRef={topRef} />
-    </group>
+    <>
+      {message && <div>{message}</div>}
+
+      <group
+        ref={groupRef}
+        onClick={() => {
+          if (phase !== "idle") return;
+          setPhase("shaking");
+          handleCatch();
+        }}
+      >
+        <PokeballModel topRef={topRef} />
+      </group>
+    </>
   );
 }
