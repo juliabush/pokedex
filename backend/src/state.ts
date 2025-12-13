@@ -1,15 +1,7 @@
-import { getCommands } from "./command.js";
 import { PokeAPI } from "./pokeapi.js";
 import type { Pokemon } from "./pokeapi.js";
 
-export type BackendCommand = {
-  name: string;
-  description: string;
-  handler: (state: State, payload?: unknown) => unknown;
-};
-
 export type State = {
-  commands: Record<string, BackendCommand>;
   pokedex: Record<string, Pokemon>;
   pokeAPI: PokeAPI;
   nextLocationsURL?: string | null;
