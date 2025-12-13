@@ -20,4 +20,37 @@ export default function PokeballAnimator() {
 
     return () => clearTimeout(t);
   }, [phase]);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+
+    const time = Date.now();
+
+    if (phase === "shaking") {
+      groupRef.current.rotation.z = Math.sin(time * 0.02) * 0.3;
+      groupRef.current.position.x = Math.sin(time * 0.05) * 0.5;
+    }
+
+    if (phase === "opening" && topRef.current) {
+      topRef.current.rotation.x = THREE.MathUtils.lerp(
+        topef.current.rotation.x,
+        -Math.PI / 2,
+        0.1
+      );
+    }
+
+    if (phase === "idle") {
+      groupRef.current.rotation.z = 0;
+      groupRef.current.position.x = 0;
+    }
+  });
+
+  return (
+    <group
+      ref={groupRef}
+      onClick={() => phase === "idle" && setPhase("shaking")}
+    >
+      <PokeballModel topRef={topRef} />
+    </group>
+  );
 }
