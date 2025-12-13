@@ -16,6 +16,11 @@ export default function PokeballModel() {
         <cylinderGeometry args={[5.05, 5.05, 0.4, 64]} />
         <meshStandardMaterial color="black" />
       </mesh>
+      {/* Center button of Pokeball */}
+      <mesh position={[0, 0, 5]}>
+        <cylinderGeometry args={[0.6, 0.6, 0.2, 32]} />
+        <meshStandardMaterial color="white" />
+      </mesh>
     </group>
   );
 }
