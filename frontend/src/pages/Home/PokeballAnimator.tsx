@@ -27,6 +27,10 @@ export default function PokeballAnimator() {
     return () => clearTimeout(t);
   }, [phase, caught]);
 
+  useEffect(() => {
+    if (caught) setPhase("opening");
+  }, [caught]);
+
   useFrame(() => {
     if (!groupRef.current) return;
 
