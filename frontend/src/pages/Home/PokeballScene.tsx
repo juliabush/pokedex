@@ -1,14 +1,16 @@
 import { Canvas } from "@react-three/fiber";
-import PokeballAnimator from "./PokeballAnimator";
 import { Environment, Sky } from "@react-three/drei";
+import PokeballAnimator from "./PokeballAnimator";
 import type { PokemonInspect } from "../../types/pokemon";
 
 export default function PokeballScene({
   selectedPokemon,
   onCaught,
+  resetSignal,
 }: {
   selectedPokemon: string;
   onCaught: (pokemon: PokemonInspect) => void;
+  resetSignal: number;
 }) {
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
@@ -24,7 +26,11 @@ export default function PokeballScene({
       <pointLight position={[6, 6, 10]} intensity={1.2} />
       <Environment preset="studio" />
 
-      <PokeballAnimator selectedPokemon={selectedPokemon} onCaught={onCaught} />
+      <PokeballAnimator
+        selectedPokemon={selectedPokemon}
+        onCaught={onCaught}
+        resetSignal={resetSignal}
+      />
     </Canvas>
   );
 }

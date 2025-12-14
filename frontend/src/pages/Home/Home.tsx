@@ -13,8 +13,13 @@ export default function Home() {
   const [selectedPokemon, setSelectedPokemon] = useState("pikachu");
   const [caughtPokemon, setCaughtPokemon] = useState<PokemonInspect[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [resetSignal, setResetSignal] = useState(0);
 
   const caughtIds = new Set(caughtPokemon.map((p) => p.name));
+
+  function handleReset() {
+    setResetSignal((v) => v + 1); // 🔁 reset pokéball ONLY
+  }
 
   return (
     <div className="home">
@@ -22,6 +27,7 @@ export default function Home() {
 
       <PokeballScene
         selectedPokemon={selectedPokemon}
+        resetSignal={resetSignal}
         onCaught={(pokemon) => {
           setCaughtPokemon((prev) => {
             const next = [...prev, pokemon];
@@ -36,6 +42,7 @@ export default function Home() {
         selected={selectedPokemon}
         onSelect={setSelectedPokemon}
         disabled={caughtIds}
+        onReset={handleReset}
       />
 
       {showModal && <CompletionModal onClose={() => setShowModal(false)} />}

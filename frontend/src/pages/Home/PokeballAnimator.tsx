@@ -6,14 +6,17 @@ import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 import PokemonCard from "./PokemonCard";
 import "./PokeballAnimator.css";
-import type { Phase } from "../../types";
+
+import type { PokemonInspect, Phase } from "../../types/pokemon";
 
 export default function PokeballAnimator({
   selectedPokemon,
   onCaught,
+  resetSignal,
 }: {
   selectedPokemon: string;
   onCaught: (pokemon: PokemonInspect) => void;
+  resetSignal: number;
 }) {
   const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
@@ -23,27 +26,30 @@ export default function PokeballAnimator({
   const [caught, setCaught] = useState(false);
   const [message, setMessage] = useState("");
   const [cardProgress, setCardProgress] = useState(0);
-  const [cardData, setCardData] = useState<any>(null);
+  const [cardData, setCardData] = useState<PokemonInspect | null>(null);
+
+  /* 🔁 RESET ANIMATION ONLY */
+  useEffect(() => {
+    setPhase("idle");
+    setCaught(false);
+    setMessage("");
+    setCardProgress(0);
+
+    if (cardRef.current) {
+      cardRef.current.position.set(0, 0, -8);
+      cardRef.current.scale.setScalar(0.2);
+    }
+  }, [resetSignal]);
 
   useEffect(() => {
     if (phase !== "shaking") return;
 
     const t = setTimeout(() => {
-      if (caught) {
-        setPhase("opening");
-      } else {
-        setPhase("idle");
-      }
+      setPhase(caught ? "opening" : "idle");
     }, 1500);
 
     return () => clearTimeout(t);
   }, [phase, caught]);
-
-  useEffect(() => {
-    if (!groupRef.current) return;
-    groupRef.current.rotation.x = 0.0;
-    groupRef.current.rotation.y = 0;
-  }, []);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -104,15 +110,7 @@ export default function PokeballAnimator({
         ref={groupRef}
         onClick={() => {
           if (phase !== "idle") return;
-
-          if (cardRef.current) {
-            cardRef.current.position.set(0, 0, -8);
-            cardRef.current.scale.setScalar(0.2);
-          }
-
           setMessage("");
-          setCaught(false);
-          setCardProgress(0);
           setPhase("shaking");
           handleCatch();
         }}
