@@ -1,0 +1,19 @@
+.caught-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.caught-card {
+  background: #f6e7b8;
+  border: 4px solid #f2c94c;
+  padding: 12px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.caught-card.enter {
+  opacity: 1;
+  transform: translateX(0);
+}
