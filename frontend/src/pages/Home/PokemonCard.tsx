@@ -14,11 +14,20 @@ type Props = {
 };
 
 const PokemonCard = forwardRef<THREE.Mesh, Props>(
-  ({ position = [0, 0, 0], scale = 1 }, ref) => {
+  ({ position = [0, 0, 0], scale = 1, pokemon }, ref) => {
     return (
       <mesh ref={ref} position={position} scale={scale}>
         <boxGeometry args={[4.5, 6, 0.15]} />
         <meshStandardMaterial color="white" />
+
+        {pokemon && (
+          <Html center transform>
+            <div className="card">
+              <h3>{pokemon.name}</h3>
+              <div>{pokemon.types.join(", ")}</div>
+            </div>
+          </Html>
+        )}
       </mesh>
     );
   }
