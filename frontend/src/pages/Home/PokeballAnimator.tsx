@@ -22,6 +22,7 @@ export default function PokeballAnimator({
   const [caught, setCaught] = useState(false);
   const [message, setMessage] = useState("");
   const [cardProgress, setCardProgress] = useState(0);
+  const [cardData, setCardData] = useState<any>(null);
 
   useEffect(() => {
     if (phase !== "shaking") return;
@@ -82,6 +83,7 @@ export default function PokeballAnimator({
 
     if (data.caught) {
       setCaught(true);
+      setCardData(data.pokemon);
       setMessage("Caught");
     } else {
       setMessage(`${selectedPokemon} escaped! Try again`);
@@ -108,7 +110,12 @@ export default function PokeballAnimator({
         }}
       >
         <PokeballModel topRef={topRef} />
-        <PokemonCard ref={cardRef} position={[0, 0, 4.5]} scale={0.2} />
+        <PokemonCard
+          ref={cardRef}
+          position={[0, 0, 4.5]}
+          scale={0.2}
+          pokemon={cardData}
+        />
       </group>
     </>
   );
