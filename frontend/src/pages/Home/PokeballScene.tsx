@@ -2,7 +2,11 @@ import { Canvas } from "@react-three/fiber";
 import PokeballAnimator from "./PokeballAnimator";
 import { Environment, Sky } from "@react-three/drei";
 
-export default function PokeballScene() {
+export default function PokeballScene({
+  selectedPokemon,
+}: {
+  selectedPokemon: string;
+}) {
   return (
     <Canvas camera={{ position: [2, 1.5, 20], fov: 75 }}>
       <Sky
@@ -17,7 +21,7 @@ export default function PokeballScene() {
       <pointLight position={[6, 6, 10]} intensity={1.2} />
       <Environment preset="studio" />
 
-      <PokeballAnimator />
+      <PokeballAnimator selectedPokemon={selectedPokemon} />
     </Canvas>
   );
 }
