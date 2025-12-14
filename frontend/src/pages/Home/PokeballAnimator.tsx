@@ -8,12 +8,12 @@ import PokemonCard from "./PokemonCard";
 import "./PokeballAnimator.css";
 import type { Phase } from "../../types";
 
-type Phase = "idle" | "shaking" | "opening";
-
 export default function PokeballAnimator({
   selectedPokemon,
+  onCaught,
 }: {
   selectedPokemon: string;
+  onCaught: (pokemon: PokemonInspect) => void;
 }) {
   const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
@@ -86,6 +86,7 @@ export default function PokeballAnimator({
       setCaught(true);
       setCardData(data.pokemon);
       setMessage("Caught");
+      onCaught(data.pokemon);
     } else {
       setMessage(`${selectedPokemon} escaped! Try again`);
     }
