@@ -4,6 +4,13 @@ import * as THREE from "three";
 type Props = {
   position?: [number, number, number];
   scale?: number;
+  pokemon: {
+    name: string;
+    height: number;
+    weight: number;
+    stats: { name: string; value: number }[];
+    types: string[];
+  } | null;
 };
 
 const PokemonCard = forwardRef<THREE.Mesh, Props>(
