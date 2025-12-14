@@ -25,7 +25,7 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
         <meshStandardMaterial color="white" />
 
         {pokemon?.found && (
-          <Html center transform>
+          <Html center transform distanceFactor={10} occlude={false}>
             <div className="card">
               <h3>{pokemon.name}</h3>
               <div>{pokemon.types.join(", ")}</div>

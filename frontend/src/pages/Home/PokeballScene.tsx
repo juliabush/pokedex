@@ -8,7 +8,7 @@ export default function PokeballScene({
   selectedPokemon: string;
 }) {
   return (
-    <Canvas camera={{ position: [2, 1.5, 20], fov: 75 }}>
+    <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
       <Sky
         sunPosition={[100, 20, 100]}
         turbidity={2}
