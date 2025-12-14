@@ -1,0 +1,8 @@
+.catch-message {
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
