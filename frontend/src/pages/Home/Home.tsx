@@ -6,6 +6,7 @@ import { POKEMON } from "../../data/pokemon";
 
 export default function Home() {
   const [selectedPokemon, setSelectedPokemon] = useState("pikachu");
+  const [caughtPokemon, setCaughtPokemon] = useState<PokemonInspect[]>([]);
 
   return (
     <div className="home">
