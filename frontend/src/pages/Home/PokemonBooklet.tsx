@@ -1,10 +1,5 @@
 import "./PokemonBooklet.css";
-
-type Pokemon = {
-  id: string;
-  name: string;
-  icon: string;
-};
+import type { Pokemon } from "../../types";
 
 type Props = {
   pokemon: Pokemon[];

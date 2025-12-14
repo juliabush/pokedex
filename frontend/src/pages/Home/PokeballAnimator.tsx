@@ -6,6 +6,7 @@ import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 import PokemonCard from "./PokemonCard";
 import "./PokeballAnimator.css";
+import type { Phase } from "../../types";
 
 type Phase = "idle" | "shaking" | "opening";
 
