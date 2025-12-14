@@ -10,7 +10,12 @@ export default function Home() {
 
   return (
     <div className="home">
-      <PokeballScene selectedPokemon={selectedPokemon} />
+      <PokeballScene
+        selectedPokemon={selectedPokemon}
+        onCaught={(pokemon) => {
+          setCaughtPokemon((prev) => [...prev, pokemon]);
+        }}
+      />
 
       <PokemonBooklet
         pokemon={POKEMON}
