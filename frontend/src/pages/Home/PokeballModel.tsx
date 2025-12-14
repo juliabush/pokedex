@@ -27,6 +27,14 @@ const PokeballModel = forwardRef<THREE.Group, Props>(({ topRef }, groupRef) => {
       <mesh position={[0, 0, 5.25]} rotation={[Math.PI / 2, 0, 0]}>
         <cylinderGeometry args={[0.6, 0.6, 0.05, 64]} />
         <meshStandardMaterial color="white" />
+        <mesh position={[0, 0, 0]}>
+          <sphereGeometry args={[0.45, 32, 32]} />
+          <meshStandardMaterial color="black" />
+          <mesh position={[0, 1, 0]}>
+            <sphereGeometry args={[0.35, 32, 32]} />
+            <meshStandardMaterial color="white" />
+          </mesh>
+        </mesh>
       </mesh>
     </group>
   );
