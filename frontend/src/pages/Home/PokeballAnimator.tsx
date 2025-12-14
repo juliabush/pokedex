@@ -38,8 +38,8 @@ export default function PokeballAnimator({
 
   useEffect(() => {
     if (!groupRef.current) return;
-    groupRef.current.rotation.x = 0.1;
-    groupRef.current.rotation.y = -0.1;
+    groupRef.current.rotation.x = 0.0;
+    groupRef.current.rotation.y = 0;
   }, []);
 
   useFrame(() => {

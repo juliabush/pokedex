@@ -1,11 +1,33 @@
+.booklet {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 12px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
 .booklet button {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .booklet button img {
-  width: 48px;
-  height: 48px;
+  width: 76px;
+  height: 76px;
   object-fit: contain;
+}
+
+.booklet button span {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.booklet button.active {
+  outline: 2px solid #ff3d3d;
 }
