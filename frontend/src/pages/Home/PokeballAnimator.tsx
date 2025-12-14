@@ -5,6 +5,7 @@ import { catchPokemon } from "../../api/backend";
 import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 import PokemonCard from "./PokemonCard";
+import "./PokeballAnimator.css";
 
 type Phase = "idle" | "shaking" | "opening";
 
@@ -91,7 +92,7 @@ export default function PokeballAnimator({
     <>
       {message && (
         <Html position={[0, 8, 0]} center>
-          <div>{message}</div>
+          <div className="catch-message">{message}</div>
         </Html>
       )}
 
