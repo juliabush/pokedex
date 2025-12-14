@@ -1,0 +1,65 @@
+.card {
+  width: 220px;
+  height: 300px;
+  background: #f6e7b8;
+  border: 10px solid #f2c94c;
+  border-radius: 14px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-family: serif;
+  color: #222;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-name {
+  text-transform: capitalize;
+}
+
+.card-hp {
+  color: #d32f2f;
+}
+
+.card-image {
+  margin: 6px 0;
+  background: #fff;
+  border: 2px solid #d6c48a;
+  border-radius: 6px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#ddd, #bbb);
+}
+
+.card-body {
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+.card-attack {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #cbb97e;
+  padding-top: 4px;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 16px);
+  font-size: 10px;
+  text-align: center;
+  border-top: 1px solid #cbb97e;
+  padding-top: 4px;
+}
