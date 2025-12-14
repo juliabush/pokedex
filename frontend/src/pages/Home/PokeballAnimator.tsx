@@ -28,12 +28,20 @@ export default function PokeballAnimator({
   const [cardProgress, setCardProgress] = useState(0);
   const [cardData, setCardData] = useState<PokemonInspect | null>(null);
 
-  /* 🔁 RESET ANIMATION ONLY */
   useEffect(() => {
     setPhase("idle");
     setCaught(false);
     setMessage("");
     setCardProgress(0);
+
+    if (groupRef.current) {
+      groupRef.current.rotation.set(0, 0, 0);
+      groupRef.current.position.set(0, 0, 0);
+    }
+
+    if (topRef.current) {
+      topRef.current.rotation.x = 0;
+    }
 
     if (cardRef.current) {
       cardRef.current.position.set(0, 0, -8);
