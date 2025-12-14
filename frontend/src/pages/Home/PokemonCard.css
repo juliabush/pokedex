@@ -1,12 +1,13 @@
 .card {
-  width: 220px;
-  height: 300px;
+  width: 230px;
+  height: 340px;
   background: #f6e7b8;
   border: 10px solid #f2c94c;
   border-radius: 14px;
   padding: 8px;
   box-sizing: border-box;
   font-family: serif;
+  position: relative;
   color: #222;
 }
 

@@ -12,14 +12,17 @@ type PokemonInspect = {
   types: string[];
 };
 
+type Phase = "idle" | "shaking" | "opening";
+
 type Props = {
   position?: [number, number, number];
   scale?: number;
   pokemon: PokemonInspect | null;
+  phase: Phase;
 };
 
 const PokemonCard = forwardRef<THREE.Mesh, Props>(
-  ({ position = [0, 0, 0], scale = 1, pokemon }, ref) => {
+  ({ position = [0, 0, 0], scale = 1, pokemon, phase }, ref) => {
     return (
       <mesh ref={ref} position={position} scale={scale}>
         <boxGeometry args={[4.5, 6, 0.15]} />
@@ -27,7 +30,10 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
 
         {pokemon?.found && (
           <Html center transform distanceFactor={10} occlude={false}>
-            <div className="card">
+            <div
+              className="card"
+              style={{ opacity: phase === "opening" ? 1 : 0 }}
+            >
               <div className="card-header">
                 <span className="card-name">{pokemon.name}</span>
                 <span className="card-hp">HP</span>
