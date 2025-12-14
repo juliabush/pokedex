@@ -1,3 +1,5 @@
+import "./PokemonBooklet.css";
+
 type Pokemon = {
   id: string;
   name: string;

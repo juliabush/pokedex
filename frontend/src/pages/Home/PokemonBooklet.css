@@ -1,0 +1,11 @@
+.booklet button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.booklet button img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
