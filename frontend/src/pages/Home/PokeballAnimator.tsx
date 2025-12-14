@@ -8,7 +8,11 @@ import PokemonCard from "./PokemonCard";
 
 type Phase = "idle" | "shaking" | "opening";
 
-export default function PokeballAnimator() {
+export default function PokeballAnimator({
+  selectedPokemon,
+}: {
+  selectedPokemon: string;
+}) {
   const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
   const cardRef = useRef<THREE.Mesh | null>(null);
@@ -73,13 +77,13 @@ export default function PokeballAnimator() {
   });
 
   async function handleCatch() {
-    const data = await catchPokemon("pikachu");
+    const data = await catchPokemon(selectedPokemon);
 
     if (data.caught) {
       setCaught(true);
       setMessage("Caught");
     } else {
-      setMessage("Pikachu escaped! Try again");
+      setMessage(`${selectedPokemon} escaped! Try again`);
     }
   }
 
@@ -103,7 +107,6 @@ export default function PokeballAnimator() {
         }}
       >
         <PokeballModel topRef={topRef} />
-
         <PokemonCard ref={cardRef} position={[0, 0, 4.5]} scale={0.2} />
       </group>
     </>
