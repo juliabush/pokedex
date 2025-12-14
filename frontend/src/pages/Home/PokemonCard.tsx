@@ -2,16 +2,19 @@ import { forwardRef } from "react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 
+type PokemonInspect = {
+  found: true;
+  name: string;
+  height: number;
+  weight: number;
+  stats: { name: string; value: number }[];
+  types: string[];
+};
+
 type Props = {
   position?: [number, number, number];
   scale?: number;
-  pokemon: {
-    name: string;
-    height: number;
-    weight: number;
-    stats: { name: string; value: number }[];
-    types: string[];
-  } | null;
+  pokemon: PokemonInspect | null;
 };
 
 const PokemonCard = forwardRef<THREE.Mesh, Props>(
@@ -21,7 +24,7 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
         <boxGeometry args={[4.5, 6, 0.15]} />
         <meshStandardMaterial color="white" />
 
-        {pokemon && (
+        {pokemon?.found && (
           <Html center transform>
             <div className="card">
               <h3>{pokemon.name}</h3>
