@@ -31,3 +31,17 @@
 .booklet button.active {
   outline: 2px solid #ff3d3d;
 }
+
+.booklet button.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  position: relative;
+}
+
+.booklet button .x {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  color: red;
+  font-weight: bold;
+}
