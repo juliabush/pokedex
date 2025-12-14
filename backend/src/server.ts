@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { initState } from "./state.js";
-import { commandCatch } from "./command_catch.js";
+import { commandCatchWithInspect } from "./command_combine.js";
 import { commandMap } from "./command_map.js";
 import { commandExplore } from "./command_explore.js";
 import { commandInspect } from "./command_inspect.js";
@@ -25,7 +25,7 @@ app.get("/explore/:location", async (req, res) => {
 
 app.post("/catch", async (req, res) => {
   const { name } = req.body;
-  res.json(await commandCatch(state, name));
+  res.json(await commandCatchWithInspect(state, name));
 });
 
 app.get("/inspect/:name", (req, res) => {
