@@ -65,8 +65,8 @@ export default function PokeballAnimator({
     if (phase === "opening" && cardRef.current) {
       setCardProgress((p) => Math.min(p + 0.02, 1));
 
-      cardRef.current.position.z = THREE.MathUtils.lerp(4.5, 9, cardProgress);
-      cardRef.current.position.y = THREE.MathUtils.lerp(0, 2, cardProgress);
+      cardRef.current.position.z = THREE.MathUtils.lerp(-2, 9, cardProgress);
+      cardRef.current.position.y = THREE.MathUtils.lerp(-1, 2, cardProgress);
       cardRef.current.scale.setScalar(
         THREE.MathUtils.lerp(0.2, 1, cardProgress)
       );
@@ -102,6 +102,12 @@ export default function PokeballAnimator({
         ref={groupRef}
         onClick={() => {
           if (phase !== "idle") return;
+
+          if (cardRef.current) {
+            cardRef.current.position.set(0, 0, -2);
+            cardRef.current.scale.setScalar(0.2);
+          }
+
           setMessage("");
           setCaught(false);
           setCardProgress(0);
@@ -112,7 +118,7 @@ export default function PokeballAnimator({
         <PokeballModel topRef={topRef} />
         <PokemonCard
           ref={cardRef}
-          position={[0, 0, 4.5]}
+          position={[0, 0, -2]}
           scale={0.2}
           pokemon={cardData}
         />
