@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Environment, Sky } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import PokeballAnimator from "./PokeballAnimator";
 import type { PokemonInspect } from "../../types/pokemon";
 
@@ -13,19 +13,34 @@ export default function PokeballScene({
   resetSignal: number;
 }) {
   return (
-    <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
-      <Sky
-        sunPosition={[100, 20, 100]}
-        turbidity={2}
-        rayleigh={5}
-        mieCoefficient={0.003}
-        mieDirectionalG={0.7}
+    <Canvas shadows camera={{ position: [0, 2, 20], fov: 75 }}>
+      <ambientLight intensity={0.25} />
+
+      <directionalLight
+        position={[10, 15, 10]}
+        intensity={1}
+        castShadow
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
       />
 
-      <ambientLight intensity={0.2} />
-      <pointLight position={[6, 6, 10]} intensity={1.2} />
+      {/* Rim light for silhouette */}
+      <pointLight position={[-6, 4, -8]} intensity={0.6} color="#ffffff" />
+
+      {/* Ground plane (shadow catcher) */}
+      <mesh
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, -4.5, 0]}
+        receiveShadow
+      >
+        <planeGeometry args={[50, 50]} />
+        <shadowMaterial opacity={0.25} />
+      </mesh>
+
+      {/* Optional subtle environment reflections */}
       <Environment preset="studio" />
 
+      {/* Main animation */}
       <PokeballAnimator
         selectedPokemon={selectedPokemon}
         onCaught={onCaught}
