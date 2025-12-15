@@ -1,8 +1,29 @@
 .catch-message {
-  padding: 8px 14px;
-  background: rgba(0, 0, 0, 0.75);
-  color: white;
-  font-size: 14px;
-  border-radius: 8px;
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 28px;
+  letter-spacing: 1px;
+
+  color: #ffcc00;
+
+  text-shadow: 2px 2px 0 #2a5db0, -2px 2px 0 #2a5db0, 2px -2px 0 #2a5db0,
+    -2px -2px 0 #2a5db0, 0 6px 12px rgba(0, 0, 0, 0.4);
+
+  background: none;
+  padding: 0;
+  border-radius: 0;
   white-space: nowrap;
+}
+.catch-message {
+  animation: popIn 300ms ease-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
