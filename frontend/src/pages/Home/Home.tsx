@@ -31,6 +31,8 @@ export default function Home() {
         caughtIds={caughtIds}
         onCaught={(pokemon) => {
           setCaughtPokemon((prev) => {
+            if (prev.some((p) => p.name === pokemon.name)) return prev;
+
             const next = [...prev, pokemon];
             if (next.length === 3) {
               setTimeout(() => setShowModal(true), 0);

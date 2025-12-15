@@ -6,6 +6,7 @@ import * as THREE from "three";
 import PokeballModel from "./PokeballModel";
 import PokemonCard from "./PokemonCard";
 import "./PokeballAnimator.css";
+// import { fireConfetti } from "../../utils/confetti";
 
 import type { PokemonInspect, Phase } from "../../types/pokemon";
 
@@ -65,16 +66,17 @@ export default function PokeballAnimator({
   }, [phase, caught]);
 
   useEffect(() => {
-    if (
-      phase === "opening" &&
-      cardProgress >= 1 &&
-      cardData &&
-      !revealedRef.current
-    ) {
-      revealedRef.current = true;
+    if (phase !== "opening") return;
+    if (!cardData) return;
+    if (revealedRef.current) return;
+    if (cardProgress < 1) return;
+
+    revealedRef.current = true;
+
+    if (!caughtIds.has(cardData.id)) {
       onCaught(cardData);
     }
-  }, [phase, cardProgress, cardData, onCaught]);
+  }, [phase, cardProgress, cardData, onCaught, caughtIds]);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -111,6 +113,7 @@ export default function PokeballAnimator({
   });
 
   async function handleCatch() {
+    revealedRef.current = false;
     const data = await catchPokemon(selectedPokemon);
 
     if (data.caught) {
