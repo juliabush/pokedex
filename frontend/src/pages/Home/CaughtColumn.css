@@ -1,13 +1,10 @@
 .caught-column {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .caught-card {
-  background: #f6e7b8;
-  border: 4px solid #f2c94c;
-  padding: 12px;
   opacity: 0;
   transform: translateX(-30px);
   transition: opacity 300ms ease, transform 300ms ease;
@@ -16,4 +13,25 @@
 .caught-card.enter {
   opacity: 1;
   transform: translateX(0);
+}
+
+.card.mini {
+  width: 160px;
+  height: 240px;
+  border-width: 6px;
+  padding: 6px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.card.mini .card-header {
+  font-size: 11px;
+}
+
+.card.mini .card-image {
+  height: 90px;
+}
+
+.card.mini .card-footer {
+  font-size: 9px;
 }
