@@ -35,7 +35,7 @@ export default function Home() {
 
             const next = [...prev, pokemon];
             if (next.length === 3) {
-              setTimeout(() => setShowModal(true), 0);
+              setTimeout(() => setShowModal(true), 2000);
             }
             return next;
           });
