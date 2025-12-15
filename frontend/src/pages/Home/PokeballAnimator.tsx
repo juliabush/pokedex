@@ -13,10 +13,12 @@ export default function PokeballAnimator({
   selectedPokemon,
   onCaught,
   resetSignal,
+  caughtIds,
 }: {
   selectedPokemon: string;
   onCaught: (pokemon: PokemonInspect) => void;
   resetSignal: number;
+  caughtIds: Set<string>;
 }) {
   const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
@@ -132,6 +134,12 @@ export default function PokeballAnimator({
         ref={groupRef}
         onClick={() => {
           if (phase !== "idle") return;
+
+          if (caughtIds.has(selectedPokemon)) {
+            setMessage("Choose a different Pokémon!");
+            return;
+          }
+
           setMessage("");
           setPhase("shaking");
           handleCatch();

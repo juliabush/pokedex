@@ -7,10 +7,12 @@ export default function PokeballScene({
   selectedPokemon,
   onCaught,
   resetSignal,
+  caughtIds,
 }: {
   selectedPokemon: string;
   onCaught: (pokemon: PokemonInspect) => void;
   resetSignal: number;
+  caughtIds: Set<string>;
 }) {
   return (
     <Canvas shadows camera={{ position: [0, 2, 20], fov: 75 }}>
@@ -24,10 +26,8 @@ export default function PokeballScene({
         shadow-mapSize-height={1024}
       />
 
-      {/* Rim light for silhouette */}
       <pointLight position={[-6, 4, -8]} intensity={0.6} color="#ffffff" />
 
-      {/* Ground plane (shadow catcher) */}
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -4.5, 0]}
@@ -37,14 +37,13 @@ export default function PokeballScene({
         <shadowMaterial opacity={0.25} />
       </mesh>
 
-      {/* Optional subtle environment reflections */}
       <Environment preset="studio" />
 
-      {/* Main animation */}
       <PokeballAnimator
         selectedPokemon={selectedPokemon}
         onCaught={onCaught}
         resetSignal={resetSignal}
+        caughtIds={caughtIds}
       />
     </Canvas>
   );
