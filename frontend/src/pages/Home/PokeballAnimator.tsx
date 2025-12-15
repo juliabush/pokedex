@@ -21,6 +21,7 @@ export default function PokeballAnimator({
   const groupRef = useRef<THREE.Group | null>(null);
   const topRef = useRef<THREE.Mesh | null>(null);
   const cardRef = useRef<THREE.Mesh | null>(null);
+  const revealedRef = useRef(false);
 
   const [phase, setPhase] = useState<Phase>("idle");
   const [caught, setCaught] = useState(false);
@@ -29,10 +30,12 @@ export default function PokeballAnimator({
   const [cardData, setCardData] = useState<PokemonInspect | null>(null);
 
   useEffect(() => {
+    revealedRef.current = false;
     setPhase("idle");
     setCaught(false);
     setMessage("");
     setCardProgress(0);
+    setCardData(null);
 
     if (groupRef.current) {
       groupRef.current.rotation.set(0, 0, 0);
@@ -58,6 +61,18 @@ export default function PokeballAnimator({
 
     return () => clearTimeout(t);
   }, [phase, caught]);
+
+  useEffect(() => {
+    if (
+      phase === "opening" &&
+      cardProgress >= 1 &&
+      cardData &&
+      !revealedRef.current
+    ) {
+      revealedRef.current = true;
+      onCaught(cardData);
+    }
+  }, [phase, cardProgress, cardData, onCaught]);
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -100,7 +115,6 @@ export default function PokeballAnimator({
       setCaught(true);
       setCardData(data.pokemon);
       setMessage("Caught");
-      onCaught(data.pokemon);
     } else {
       setMessage(`${selectedPokemon} escaped! Try again`);
     }

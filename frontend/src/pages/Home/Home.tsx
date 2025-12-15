@@ -18,7 +18,7 @@ export default function Home() {
   const caughtIds = new Set(caughtPokemon.map((p) => p.name));
 
   function handleReset() {
-    setResetSignal((v) => v + 1); // 🔁 reset pokéball ONLY
+    setResetSignal((v) => v + 1);
   }
 
   return (
@@ -30,8 +30,12 @@ export default function Home() {
         resetSignal={resetSignal}
         onCaught={(pokemon) => {
           setCaughtPokemon((prev) => {
+            if (prev.some((p) => p.name === pokemon.name)) return prev;
+
             const next = [...prev, pokemon];
-            if (next.length === 3) setShowModal(true);
+            if (next.length === 3) {
+              setTimeout(() => setShowModal(true), 0);
+            }
             return next;
           });
         }}
