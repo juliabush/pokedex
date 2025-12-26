@@ -1,4 +1,5 @@
 export type PokemonInspect = {
+  id: number;
   found: true;
   name: string;
   height: number;

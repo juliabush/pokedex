@@ -16,7 +16,11 @@ export default function CaughtColumn({ caught }: Props) {
             </div>
 
             <div className="card-image">
-              <div className="image-placeholder" />
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+                alt={pokemon.name}
+                className="pokemon-sprite"
+              />
             </div>
 
             <div className="card-footer">
