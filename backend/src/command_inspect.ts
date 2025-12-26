@@ -7,6 +7,7 @@ export function commandInspect(
 ):
   | {
       found: true;
+      id: number;
       name: string;
       height: number;
       weight: number;
@@ -22,6 +23,7 @@ export function commandInspect(
 
   return {
     found: true,
+    id: pokemon.id,
     name: pokemon.name,
     height: pokemon.height,
     weight: pokemon.weight,
