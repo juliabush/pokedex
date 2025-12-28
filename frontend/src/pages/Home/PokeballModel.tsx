@@ -2,7 +2,7 @@ import { forwardRef, type RefObject } from "react";
 import * as THREE from "three";
 
 type Props = {
-  topRef: React.RefObject<THREE.Mesh>;
+  topRef: React.RefObject<THREE.Mesh | null>;
 };
 
 const PokeballModel = forwardRef<THREE.Group, Props>(({ topRef }, groupRef) => {

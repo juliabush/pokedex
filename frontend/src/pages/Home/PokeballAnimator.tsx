@@ -76,7 +76,7 @@ export default function PokeballAnimator({
 
     fireConfetti();
 
-    if (!caughtIds.has(cardData.id)) {
+    if (!caughtIds.has(cardData.name)) {
       onCaught(cardData);
     }
   }, [phase, cardProgress, cardData, caught, onCaught, caughtIds]);
