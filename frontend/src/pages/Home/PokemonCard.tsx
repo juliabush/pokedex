@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 import "./PokemonCard.css";
-import { PokemonInspect, Phase } from "../../types/pokemon";
+import type { PokemonInspect, Phase } from "../../types/pokemon";
 
 type Props = {
   position?: [number, number, number];
