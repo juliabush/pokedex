@@ -1,5 +1,5 @@
 import "./PokemonBooklet.css";
-import type { Pokemon } from "../../types";
+import type { Pokemon } from "../../types/pokemon";
 import ResetButton from "./ResetButton";
 
 type Props = {
