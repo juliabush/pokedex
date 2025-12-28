@@ -39,4 +39,4 @@ export const POKEMON = [
     name: "Rayquaza",
     icon: "/pokemon/rayquaza.jpg",
   },
-] as const;
+];
