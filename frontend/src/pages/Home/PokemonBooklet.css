@@ -50,3 +50,30 @@
   color: red;
   font-weight: bold;
 }
+.booklet-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .booklet {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .booklet-toggle {
+    display: block;
+  }
+
+  .booklet-list {
+    display: none;
+  }
+
+  .booklet-list.open {
+    display: block;
+  }
+}

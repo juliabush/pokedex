@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./PokemonBooklet.css";
 import type { Pokemon } from "../../types/pokemon";
 import ResetButton from "./ResetButton";
@@ -17,9 +18,15 @@ export default function PokemonBooklet({
   disabled,
   onReset,
 }: Props) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="booklet">
-      <div className="booklet-list">
+      <button className="booklet-toggle" onClick={() => setOpen((v) => !v)}>
+        Pokémon
+      </button>
+
+      <div className={`booklet-list ${open ? "open" : ""}`}>
         {pokemon.map((p) => {
           const isDisabled = disabled.has(p.id);
 
@@ -31,7 +38,10 @@ export default function PokemonBooklet({
                 isDisabled ? "disabled" : "",
               ].join(" ")}
               disabled={isDisabled}
-              onClick={() => onSelect(p.id)}
+              onClick={() => {
+                onSelect(p.id);
+                setOpen(false);
+              }}
             >
               <img src={p.icon} />
               <span>{p.name}</span>
