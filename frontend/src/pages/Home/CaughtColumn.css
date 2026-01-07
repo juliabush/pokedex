@@ -56,4 +56,12 @@
   .caught-card.enter {
     transform: translateY(0);
   }
+  .card.mini {
+    width: 110px;
+    height: 180px;
+    border-width: 6px;
+    padding: 6px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
 }
