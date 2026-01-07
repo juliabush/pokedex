@@ -41,7 +41,7 @@
 @media (max-width: 768px) {
   .caught-column {
     flex-direction: row;
-    width: 200px;
+    height: 180px;
     margin: 0;
     padding: 0 1rem;
     gap: 12px;
