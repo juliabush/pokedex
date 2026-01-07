@@ -11,3 +11,10 @@
   justify-content: center;
   background: linear-gradient(135deg, #32c8d39c, #d676be94);
 }
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+}
