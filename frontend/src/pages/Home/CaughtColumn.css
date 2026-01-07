@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-right: 2rem;
-  margin-left: 2rem;
-  width: 180px;
+  /* margin-right: 2rem;
+  margin-left: 2rem; */
+  /* width: 180px; */
 }
 
 .caught-card {
@@ -37,4 +37,22 @@
 
 .card.mini .card-footer {
   font-size: 9px;
+}
+@media (max-width: 768px) {
+  .caught-column {
+    flex-direction: row;
+    /* width: 100%; */
+    margin: 0;
+    padding: 0 1rem;
+    overflow-x: auto;
+    gap: 12px;
+  }
+
+  .caught-card {
+    transform: translateY(20px);
+  }
+
+  .caught-card.enter {
+    transform: translateY(0);
+  }
 }
