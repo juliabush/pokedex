@@ -4,7 +4,6 @@ import "./Home.css";
 import PokeballScene from "./PokeballScene";
 import PokemonBooklet from "./PokemonBooklet";
 import CaughtColumn from "./CaughtColumn";
-import CompletionModal from "./CompletionModal";
 
 import { POKEMON } from "../../data/pokemon";
 import type { PokemonInspect } from "../../types/pokemon";
@@ -12,7 +11,6 @@ import type { PokemonInspect } from "../../types/pokemon";
 export default function Home() {
   const [selectedPokemon, setSelectedPokemon] = useState("pikachu");
   const [caughtPokemon, setCaughtPokemon] = useState<PokemonInspect[]>([]);
-  const [showModal, setShowModal] = useState(false);
   const [resetSignal, setResetSignal] = useState(0);
 
   const caughtIds = new Set(caughtPokemon.map((p) => p.name));
@@ -32,12 +30,7 @@ export default function Home() {
         onCaught={(pokemon) => {
           setCaughtPokemon((prev) => {
             if (prev.some((p) => p.name === pokemon.name)) return prev;
-
-            const next = [...prev, pokemon];
-            if (next.length === 3) {
-              setTimeout(() => setShowModal(true), 2000);
-            }
-            return next;
+            return [...prev, pokemon];
           });
         }}
       />
@@ -49,8 +42,6 @@ export default function Home() {
         disabled={caughtIds}
         onReset={handleReset}
       />
-
-      {showModal && <CompletionModal onClose={() => setShowModal(false)} />}
     </div>
   );
 }
