@@ -47,13 +47,6 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
                   </div>
                 ))}
               </div>
-
-              <div className="card-footer">
-                <div>{pokemon.types.join(", ")}</div>
-                <div>
-                  H: {pokemon.height} · W: {pokemon.weight}
-                </div>
-              </div>
             </div>
           </Html>
         )}

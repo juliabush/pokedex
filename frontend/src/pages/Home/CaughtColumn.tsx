@@ -31,12 +31,13 @@ export default function CaughtColumn({ caught }: Props) {
               </div>
 
               <div className="card-body">
-                <div className="card-attack">
-                  <span className="attack-name">—</span>
-                  <span className="attack-damage">—</span>
-                </div>
+                {pokemon.stats.map((stat) => (
+                  <div key={stat.name} className="card-attack">
+                    <span className="attack-name">{stat.name}</span>
+                    <span className="attack-damage">{stat.value}</span>
+                  </div>
+                ))}
               </div>
-
               <div className="card-footer">
                 <div>{pokemon.types.join(", ")}</div>
               </div>
