@@ -27,6 +27,13 @@ export default function CaughtColumn({ caught }: Props) {
               />
             </div>
 
+            <div className="card-body">
+              <div className="card-attack">
+                <span className="attack-name">—</span>
+                <span className="attack-damage">—</span>
+              </div>
+            </div>
+
             <div className="card-footer">
               <div>{pokemon.types.join(", ")}</div>
             </div>
