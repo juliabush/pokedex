@@ -1,5 +1,6 @@
 import type { PokemonInspect } from "../../types/pokemon";
 import "./CaughtColumn.css";
+import "./PokemonCard.css";
 
 type Props = {
   caught: PokemonInspect[];
@@ -13,6 +14,9 @@ export default function CaughtColumn({ caught }: Props) {
           <div className="card mini">
             <div className="card-header">
               <span className="card-name">{pokemon.name}</span>
+              <span className="card-hp">
+                HP {pokemon.stats.find((s) => s.name === "hp")?.value ?? "—"}
+              </span>
             </div>
 
             <div className="card-image">
@@ -24,7 +28,7 @@ export default function CaughtColumn({ caught }: Props) {
             </div>
 
             <div className="card-footer">
-              <span className="card-type">{pokemon.types.join(", ")}</span>
+              <div>{pokemon.types.join(", ")}</div>
             </div>
           </div>
         </div>
