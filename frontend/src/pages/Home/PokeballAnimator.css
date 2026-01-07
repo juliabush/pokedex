@@ -27,3 +27,8 @@
     opacity: 1;
   }
 }
+@media (max-width: 768px) {
+  .catch-message {
+    font-size: 16px;
+  }
+}
