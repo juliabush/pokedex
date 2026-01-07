@@ -26,7 +26,9 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
             >
               <div className="card-header">
                 <span className="card-name">{pokemon.name}</span>
-                <span className="card-hp">HP</span>
+                <span className="card-hp">
+                  HP {pokemon.stats.find((s) => s.name === "hp")?.value ?? "—"}
+                </span>
               </div>
 
               <div className="card-image">
@@ -38,14 +40,19 @@ const PokemonCard = forwardRef<THREE.Mesh, Props>(
               </div>
 
               <div className="card-body">
-                <div className="card-attack">
-                  <span className="attack-name">Attack</span>
-                  <span className="attack-damage">—</span>
-                </div>
+                {pokemon.stats.map((stat) => (
+                  <div key={stat.name} className="card-attack">
+                    <span className="attack-name">{stat.name}</span>
+                    <span className="attack-damage">{stat.value}</span>
+                  </div>
+                ))}
               </div>
 
               <div className="card-footer">
-                <span className="card-type">{pokemon.types.join(", ")}</span>
+                <div>{pokemon.types.join(", ")}</div>
+                <div>
+                  H: {pokemon.height} · W: {pokemon.weight}
+                </div>
               </div>
             </div>
           </Html>
