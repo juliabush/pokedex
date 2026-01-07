@@ -28,12 +28,26 @@ See if you can catch them all!!!
 - @react-three/drei
 - CSS
 - Vite for bundling
+
   **Backend**
+
 - Node.js + Express
 - In-memory game state
 - PokeAPI integration
 - Custom command-based game logic
 - Vitest for testing
+
+**Infrastructure**
+
+- Backend
+
+* Hosted on AWS EC2
+* Dockerized services
+* Caddy as reverse proxy
+
+- Frontend
+
+* Deployed on Vercel
 
 # Key Technical Takeaways
 
