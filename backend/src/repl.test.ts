@@ -1,7 +1,6 @@
 import { Cache } from "./pokecache.js";
 import { describe, expect, test } from "vitest";
 
-// Cache test
 test.concurrent.each([
   {
     key: "https://pokeapi.co/api/v2/location-area",
