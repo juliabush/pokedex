@@ -49,13 +49,9 @@ button .x {
   font-weight: bold;
 }
 
-/* ---------- Desktop ---------- */
-
 .booklet-desktop {
   margin: 2rem;
 }
-
-/* ---------- Mobile ---------- */
 
 .booklet-hamburger {
   display: none;
@@ -107,6 +103,7 @@ button .x {
     height: 100%;
     background: #f9f9f9;
     padding: 16px;
+    padding-bottom: 32px;
     overflow-y: auto;
   }
 
