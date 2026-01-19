@@ -121,3 +121,19 @@ button .x {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+.instructions-button {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+.instructions-box {
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}

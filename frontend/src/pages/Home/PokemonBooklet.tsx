@@ -19,6 +19,7 @@ export default function PokemonBooklet({
   onReset,
 }: Props) {
   const [open, setOpen] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   return (
     <>
@@ -39,6 +40,24 @@ export default function PokemonBooklet({
             <h3>Pokémon</h3>
             <button onClick={() => setOpen(false)}>✕</button>
           </div>
+
+          <button
+            className="instructions-button"
+            onClick={() => setShowInstructions((v) => !v)}
+          >
+            Instructions
+          </button>
+
+          {showInstructions && (
+            <div className="instructions-box">
+              <p>
+                Select a Pokemon to from the avaliable list. To catch this
+                Pokemon, you must click on the 3D ball. Dont be discouraged if
+                it takes a few clicks to catch a given Pokemon. Pokemon you have
+                already caught cannot be selected again.
+              </p>
+            </div>
+          )}
 
           <div className="booklet-list">
             {pokemon.map((p) => {
@@ -70,6 +89,15 @@ export default function PokemonBooklet({
       </div>
 
       <div className="booklet-desktop">
+        <div className="instructions-box">
+          <p>
+            Select a Pokemon to from the avaliable list. <br></br>To catch this
+            Pokemon, you must click on the 3D ball. <br></br>Dont be discouraged
+            if it takes a few clicks to catch a given Pokemon. <br></br> Pokemon
+            you have already caught cannot be selected again.
+          </p>
+        </div>
+
         <div className="booklet-list">
           {pokemon.map((p) => {
             const isDisabled = disabled.has(p.id);
