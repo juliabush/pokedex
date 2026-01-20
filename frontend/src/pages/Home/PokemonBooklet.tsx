@@ -54,7 +54,8 @@ export default function PokemonBooklet({
                 Select a Pokemon to from the avaliable list. To catch this
                 Pokemon, you must click on the 3D ball. Dont be discouraged if
                 it takes a few clicks to catch a given Pokemon. Pokemon you have
-                already caught cannot be selected again.
+                already caught cannot be selected again. To get the ball back to
+                its original state, press the red reset button.
               </p>
             </div>
           )}
@@ -94,7 +95,8 @@ export default function PokemonBooklet({
             Select a Pokemon to from the avaliable list. <br></br>To catch this
             Pokemon, you must click on the 3D ball. <br></br>Dont be discouraged
             if it takes a few clicks to catch a given Pokemon. <br></br> Pokemon
-            you have already caught cannot be selected again.
+            you have already caught cannot be selected again. <br></br> To get
+            the ball back to its original state, press the red reset button.
           </p>
         </div>
 
