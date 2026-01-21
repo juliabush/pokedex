@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import { Environment } from "@react-three/drei";
 import PokeballAnimator from "./PokeballAnimator";
 import type { PokemonInspect } from "../../types/pokemon";
@@ -39,12 +40,14 @@ export default function PokeballScene({
 
       <Environment preset="studio" />
 
-      <PokeballAnimator
-        selectedPokemon={selectedPokemon}
-        onCaught={onCaught}
-        resetSignal={resetSignal}
-        caughtIds={caughtIds}
-      />
+      <Suspense fallback={null}>
+        <PokeballAnimator
+          selectedPokemon={selectedPokemon}
+          onCaught={onCaught}
+          resetSignal={resetSignal}
+          caughtIds={caughtIds}
+        />
+      </Suspense>
     </Canvas>
   );
 }
