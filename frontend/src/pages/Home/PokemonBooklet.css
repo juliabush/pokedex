@@ -148,3 +148,16 @@ button .x {
 .instructions-box p {
   margin: 0;
 }
+.instructions-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.instructions-steps .step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  line-height: 1.4;
+}

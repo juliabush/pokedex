@@ -11,6 +11,46 @@ type Props = {
   onReset: () => void;
 };
 
+function Instructions() {
+  return (
+    <div className="instructions-box">
+      <div className="instructions-steps">
+        <div className="step">
+          <span>Select a Pokémon from the list</span>
+        </div>
+        <div className="step">
+          <span>Click the 3D Pokéball to try catching it</span>
+          <img
+            src="/pokeball.jpg"
+            style={{ width: "60px" }}
+            alt="Pokeball Image"
+          />
+        </div>
+        <div className="step">
+          <span>Some Pokémon take multiple attempts</span>
+        </div>
+        <div className="step">
+          <img
+            src="/card.webp"
+            style={{
+              width: "60px",
+              marginRight: "10px",
+              marginBottom: "6px",
+              marginTop: "6px",
+              transform: "rotate(-10deg)",
+            }}
+            alt="Card Image"
+          />
+          <span>Caught Pokémon cannot be selected again</span>
+        </div>
+        <div className="step">
+          <span>Use reset to restore the Pokéball</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function PokemonBooklet({
   pokemon,
   selected,
@@ -48,17 +88,7 @@ export default function PokemonBooklet({
             Instructions
           </button>
 
-          {showInstructions && (
-            <div className="instructions-box">
-              <p>
-                Select a Pokemon to from the avaliable list. To catch this
-                Pokemon, you must click on the 3D ball. Dont be discouraged if
-                it takes a few clicks to catch a given Pokemon. Pokemon you have
-                already caught cannot be selected again. To get the ball back to
-                its original state, press the red reset button.
-              </p>
-            </div>
-          )}
+          {showInstructions && <Instructions />}
 
           <div className="booklet-list">
             {pokemon.map((p) => {
@@ -90,15 +120,7 @@ export default function PokemonBooklet({
       </div>
 
       <div className="booklet-desktop">
-        <div className="instructions-box">
-          <p>
-            Select a Pokemon to from the avaliable list. <br></br>To catch this
-            Pokemon, you must click on the 3D ball. <br></br>Dont be discouraged
-            if it takes a few clicks to catch a given Pokemon. <br></br> Pokemon
-            you have already caught cannot be selected again. <br></br> To get
-            the ball back to its original state, press the red reset button.
-          </p>
-        </div>
+        <Instructions />
 
         <div className="booklet-list">
           {pokemon.map((p) => {
