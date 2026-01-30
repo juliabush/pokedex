@@ -10,7 +10,8 @@
   position: relative;
   color: #2b2b2b;
 
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.25),
     inset 0 0 0 2px rgba(255, 255, 255, 0.4);
 }
 
@@ -81,6 +82,25 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35),
+  box-shadow:
+    0 16px 30px rgba(0, 0, 0, 0.35),
     inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+@media (min-width: 2000px) {
+  .card {
+    width: 230px;
+    height: 380px;
+    background: linear-gradient(180deg, #fdf3c6, #f1d98a);
+    border: 10px solid #e0b84f;
+    border-radius: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: "Georgia", serif;
+    position: relative;
+    color: #2b2b2b;
+
+    box-shadow:
+      0 12px 25px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+  }
 }
