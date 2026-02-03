@@ -3,6 +3,23 @@ import { Suspense } from "react";
 import { Environment } from "@react-three/drei";
 import PokeballAnimator from "./PokeballAnimator";
 import type { PokemonInspect } from "../../types/pokemon";
+import { Component } from "react";
+
+class EnvErrorBoundary extends Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
 
 export default function PokeballScene({
   selectedPokemon,
@@ -38,7 +55,11 @@ export default function PokeballScene({
         <shadowMaterial opacity={0.25} />
       </mesh>
 
-      <Environment preset="studio" />
+      <EnvErrorBoundary>
+        <Suspense fallback={null}>
+          <Environment preset="studio" />
+        </Suspense>
+      </EnvErrorBoundary>
 
       <Suspense fallback={null}>
         <PokeballAnimator
